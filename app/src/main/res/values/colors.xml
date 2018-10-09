@@ -9,4 +9,6 @@
     <color name="colorGreenDark">#006115</color>
     <color name="colorSubText">#ABAAAA</color>
     <color name="colorYellow">#FFBF00</color>
+    <color name="colorGreenNav">#0cd939</color>
+    <color name="colorGreenDarkNav">#006115</color>
 </resources>

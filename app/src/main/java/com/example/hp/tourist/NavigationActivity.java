@@ -1,12 +1,9 @@
 package com.example.hp.tourist;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -71,7 +68,7 @@ public class NavigationActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        FrameLayout fl = findViewById(R.id.drawer_layout);
+        FrameLayout fl = findViewById(R.id.FrFragment);
         fl.removeAllViews();
         manager.popBackStack();
         getFragmentManager().popBackStack();
@@ -80,27 +77,27 @@ public class NavigationActivity extends AppCompatActivity
 
 
         switch (item.getItemId()) {
-            case R.id.nav_camera: {
+            case R.id.nav_rutas: {
+                fragment = new FragmentRutas();
+                break;
+            }
+            case R.id.nav_chat: {
 
                 break;
             }
-            case R.id.nav_gallery: {
+            case R.id.nav_eventos: {
 
                 break;
             }
-            case R.id.nav_slideshow: {
+            case R.id.nav_noticias: {
 
                 break;
             }
-            case R.id.nav_manage: {
+            case R.id.nav_perfil: {
 
                 break;
             }
-            case R.id.nav_send: {
-
-                break;
-            }
-            case R.id.nav_share: {
+            case R.id.nav_configuracion: {
 
                 break;
             }
@@ -108,7 +105,7 @@ public class NavigationActivity extends AppCompatActivity
 
 
         if(fragment != null) {
-            transaction.replace(R.id.drawer_layout, fragment);
+            transaction.replace(R.id.FrFragment, fragment);
             transaction.commit();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
