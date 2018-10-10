@@ -44,7 +44,14 @@ public class TableActivity extends AppCompatActivity {
             TextView tv = new TextView(this);
             tv.setText(objects.toString());
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
+            /**
+             * Agregar todos los tvs
+             */
             tr.addView(tv);
+
+            /**
+             * Agregar el tr
+             */
             tl.addView(tr);
         }
 

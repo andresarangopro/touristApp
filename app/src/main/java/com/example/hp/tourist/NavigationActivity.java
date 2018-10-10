@@ -87,7 +87,7 @@ public class NavigationActivity extends AppCompatActivity
                 break;
             }
             case R.id.nav_chat: {
-
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 break;
             }
             case R.id.nav_eventos: {
@@ -111,7 +111,6 @@ public class NavigationActivity extends AppCompatActivity
                 break;
             }
         }
-
 
         if(fragment != null) {
             transaction.replace(R.id.FrFragment, fragment);
