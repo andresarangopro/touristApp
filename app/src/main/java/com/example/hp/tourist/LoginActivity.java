@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int v = view.getId();
         switch (v){
             case R.id.btnIngresar:{
-                startActivity(new Intent(getApplicationContext(), NavigationActivity.class));
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 break;
             }
         }
