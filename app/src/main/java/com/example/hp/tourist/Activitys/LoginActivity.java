@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         tr.inicializatedFireBase(this);
         init();
+        verificaSignIn();
     }
 
     public void init() {
@@ -42,7 +44,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvRegistrate = findViewById(R.id.tvRegistrate);
         tvRegistrate.setOnClickListener(this);
     }
-
+    private void verificaSignIn(){
+        if(tr.firebaseAuth.getCurrentUser() != null){
+            tr.account(LoginActivity.this, NavigationActivity.class);
+            finish();
+        }
+    }
     @Override
     public void onClick(View view) {
         int v = view.getId();

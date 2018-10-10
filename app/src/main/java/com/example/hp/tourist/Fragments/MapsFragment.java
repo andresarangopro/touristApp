@@ -1,16 +1,18 @@
-package com.example.hp.tourist;
+package com.example.hp.tourist.Fragments;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.hp.tourist.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,7 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsFragment extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
@@ -110,30 +112,63 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /*
          * Get the best and most recent location of the device, which may be null in rare
          * cases when a location is not available.
+         *
          */
+
         try {
             if (mLocationPermissionGranted) {
-                Task locationResult = mfusedLocationProviderclient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener() {
+                Task<Location> locationResult = mfusedLocationProviderclient.getLastLocation();
+                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
                     @Override
-                    public void onComplete(@NonNull Task task) {
+                    public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
-                            mLastKnownLocation = (Location) task.getResult();
+                            mLastKnownLocation = task.getResult();
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
-                                            mLastKnownLocation.getLongitude()), 8.0f));
-                            mMap.getUiSettings().setMyLocationButtonEnabled(Boolean.TRUE);
-                            mMap.setMyLocationEnabled(Boolean.TRUE);
+                                            mLastKnownLocation.getLongitude()),8.0f));
                         } else {
+                            Log.d("ERR", "Current location is null. Using defaults.");
+                            Log.e("ERR", "Exception: %s", task.getException());
+                            mMap.moveCamera(CameraUpdateFactory
+                                    .newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
+                                            mLastKnownLocation.getLongitude()), 8.0f));
                             mMap.getUiSettings().setMyLocationButtonEnabled(false);
                         }
                     }
                 });
             }
-        } catch(SecurityException e)  {
+        } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());
         }
+      /*  try {
+            if (mLocationPermissionGranted) {
+                Task locationResult = mfusedLocationProviderclient.getLastLocation();
+
+                    locationResult.addOnCompleteListener(this, new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()) {
+                                // Set the map's camera position to the current location of the device.
+
+                                mLastKnownLocation = (Location) task.getResult();
+                                if(mLastKnownLocation != null){
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                            new LatLng(mLastKnownLocation.getLatitude(),
+                                                    mLastKnownLocation.getLongitude()), 8.0f));
+                                    mMap.getUiSettings().setMyLocationButtonEnabled(Boolean.TRUE);
+                                    mMap.setMyLocationEnabled(Boolean.TRUE);
+                                }
+
+                            } else {
+                                mMap.getUiSettings().setMyLocationButtonEnabled(false);
+                            }
+                        }
+                    });
+            }
+        } catch(SecurityException e)  {
+            Log.e("Exception: %s", e.getMessage());
+        }*/
     }
 
     /**
@@ -157,8 +192,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void onPinClick(){
-
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -167,7 +200,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mLastKnownLocation.getLatitude();
                     mLastKnownLocation.getLongitude();
                 }
-                Toast.makeText(MapsActivity.this, "Hola", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsFragment.this, "Hola", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
