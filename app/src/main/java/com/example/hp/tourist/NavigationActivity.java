@@ -1,5 +1,6 @@
 package com.example.hp.tourist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,16 +15,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.hp.tourist.Activitys.LoginActivity;
+import com.example.hp.tourist.Clases.Transacciones;
+import com.example.hp.tourist.Fragments.FragmentRutas;
+
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private Transacciones tr = new Transacciones();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        tr.inicializatedFireBase(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -101,6 +106,10 @@ public class NavigationActivity extends AppCompatActivity
 
                 break;
             }
+            case R.id.nav_logout: {
+                cerrarSesion();
+                break;
+            }
         }
 
 
@@ -112,5 +121,10 @@ public class NavigationActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
 
+    }
+    public void cerrarSesion(){
+        tr.firebaseAuth.signOut();
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 }

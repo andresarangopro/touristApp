@@ -1,7 +1,9 @@
-package com.example.hp.tourist;
+package com.example.hp.tourist.Activitys;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.hp.tourist.R;
 
 public class ForgotActivity extends AppCompatActivity {
 
