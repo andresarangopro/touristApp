@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.hp.tourist.NavigationActivity;
 import com.example.hp.tourist.R;
 import com.example.hp.tourist.Clases.Transacciones;
+import com.example.hp.tourist.TableActivity;
 import com.example.hp.tourist.Util;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int v = view.getId();
+        //startActivity(new Intent(getApplicationContext(), TableActivity.class));
         switch (v) {
             case R.id.btnIngresar: {
                 String mail = Util.getTxt(tvMail);
