@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Button btnIngresar;
     private EditText tvMail, tvPassword;
-    private TextView tvRegistrate;
+    private TextView tvRegistrate, tvForgotPass;
     public static boolean calledAlready = false;
     private Transacciones tr = new Transacciones();
     private ProgressDialog progressDialog;
@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnIngresar = findViewById(R.id.btnIngresar);
         btnIngresar.setOnClickListener(this);
         tvMail = findViewById(R.id.txtEmail);
+        tvForgotPass = findViewById(R.id.tvOlvidastePass);
+        tvForgotPass.setOnClickListener(this);
         tvPassword = findViewById(R.id.txtPassword);
         progressDialog = new ProgressDialog(this);
         tvRegistrate = findViewById(R.id.tvRegistrate);
@@ -54,7 +56,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             }
             case R.id.tvRegistrate:{
-                startActivity(new Intent(LoginActivity.this,ActivityRegister.class));
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                break;
+            }
+            case R.id.tvOlvidastePass:{
+                startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
                 break;
             }
         }

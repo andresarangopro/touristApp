@@ -12,7 +12,7 @@ import com.example.hp.tourist.Clases.Transacciones;
 import com.example.hp.tourist.Util;
 
 
-public class ActivityRegister extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnRegistrar;
     private ProgressDialog pd;
@@ -47,7 +47,7 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
                     if(validarPass()){
                         pd.setMessage("Ingresando, por favor espera");
                         pd.show();
-                        mn.registrarUser(Util.getTxt(txtEmail),Util.getTxt(txtPass), ActivityRegister.this, Util.getTxt(txtName),pd);
+                        mn.registrarUser(Util.getTxt(txtEmail),Util.getTxt(txtPass), RegisterActivity.this, Util.getTxt(txtName),pd);
                     }else{
                         txtConfirPass.setText("Las contraseñas no coinciden");
                     }

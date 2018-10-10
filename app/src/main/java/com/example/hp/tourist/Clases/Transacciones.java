@@ -116,9 +116,6 @@ public class Transacciones {
         });
     }
 
-
-
-
   public void registrarUser(final String email, final String password, final Context context, final String name,  final ProgressDialog pd){
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Registrando usuario, por favor espera");
