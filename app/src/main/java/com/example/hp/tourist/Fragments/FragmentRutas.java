@@ -1,4 +1,4 @@
-package com.example.hp.tourist;
+package com.example.hp.tourist.Fragments;
 
 
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hp.tourist.R;
 
 
 public class FragmentRutas extends Fragment {

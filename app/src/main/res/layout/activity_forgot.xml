@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForgotActivity">
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context="com.example.hp.tourist.Activitys.ForgotActivity">
+   <!-- android:background="@drawable/black_background"-->
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="30"/>
+
+    <EditText
+     android:id="@+id/txtEmailF"
+     android:layout_width="match_parent"
+     android:layout_height="0dp"
+     android:layout_margin="10dp"
+     android:layout_weight="15"
+     android:background="@drawable/edittext_style"
+     android:drawableLeft="@mipmap/ic_user"
+     android:drawablePadding="10dp"
+     android:drawableStart="@mipmap/ic_user"
+     android:hint="E-mail"
+     android:inputType="textEmailAddress"
+     android:paddingLeft="5dp"
+     android:textColor="@color/colorAccent"
+     android:textColorHint="@color/colorAccent" />
+
+
+    <Button
+        android:id="@+id/btnRecuperar"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_weight="15"
+        android:background="@drawable/buttonlogin_style"
+        android:text="Recuperar" />
+
+</LinearLayout>

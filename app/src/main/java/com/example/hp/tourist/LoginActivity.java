@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         init();
     }
 
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         int v = view.getId();
+
         switch (v){
             case R.id.btnIngresar:{
                 startActivity(new Intent(getApplicationContext(), MapsActivity.class));
