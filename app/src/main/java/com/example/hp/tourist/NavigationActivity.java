@@ -91,7 +91,7 @@ public class NavigationActivity extends AppCompatActivity
                 break;
             }
             case R.id.nav_eventos: {
-
+                fragment = new FragmentAtracciones();
                 break;
             }
             case R.id.nav_noticias: {
