@@ -2,7 +2,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="#cccccc">
     <TableLayout
         android:layout_margin="10dp"
         android:layout_width="fill_parent"
@@ -54,6 +53,5 @@
                 android:textStyle="bold"
                 android:layout_column="2"/>
         </TableRow>
-
     </TableLayout>
 </LinearLayout>
