@@ -9,11 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.hp.tourist.MapsActivity;
+
 import com.example.hp.tourist.NavigationActivity;
 import com.example.hp.tourist.R;
 import com.example.hp.tourist.Clases.Transacciones;
-import com.example.hp.tourist.TableActivity;
 import com.example.hp.tourist.Util;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         tr.inicializatedFireBase(this);
         init();
+        verificaSignIn();
     }
 
     public void init() {
@@ -44,7 +44,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvRegistrate = findViewById(R.id.tvRegistrate);
         tvRegistrate.setOnClickListener(this);
     }
-
+    private void verificaSignIn(){
+        if(tr.firebaseAuth.getCurrentUser() != null){
+            tr.account(LoginActivity.this, NavigationActivity.class);
+            finish();
+        }
+    }
     @Override
     public void onClick(View view) {
         int v = view.getId();

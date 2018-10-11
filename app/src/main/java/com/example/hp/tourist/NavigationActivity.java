@@ -87,7 +87,7 @@ public class NavigationActivity extends AppCompatActivity
                 break;
             }
             case R.id.nav_chat: {
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 break;
             }
             case R.id.nav_eventos: {

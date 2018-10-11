@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.example.hp.tourist.Municipio;
 import com.example.hp.tourist.NavigationActivity;
 
+import com.example.hp.tourist.Ruta;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -60,6 +62,11 @@ public class Transacciones {
         return databaseReference.child(childDatabaseR).child(key).setValue(object);
     }
 
+
+    public Task<AuthResult> login(String mail,String pass){
+        return firebaseAuth.signInWithEmailAndPassword(mail, pass);
+    }
+
     public void inicializatedFireBase(Context context){
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -71,6 +78,19 @@ public class Transacciones {
             calledAlready = true;
         }
         databaseReference = firebaseDatabase.getReference();
+    }
+
+    public void insertarMunicip(Municipio m){
+        String id= databaseReference.push().getKey();
+        String mun = "Municipios";
+        insertar(mun,id, m);
+    }
+
+    public void insertarRuta(Ruta ruta){
+
+        String id= databaseReference.push().getKey();
+        String rot = "Rutas";
+        insertar(rot,id, ruta);
     }
 
     public void account(final Context context, final Class<NavigationActivity> activityOpen){
@@ -96,9 +116,6 @@ public class Transacciones {
         return databaseReference.child(usChildString);
     }
 
-    public Task<AuthResult> login(String mail,String pass){
-        return firebaseAuth.signInWithEmailAndPassword(mail, pass);
-    }
 
     public void loguearse(final String mail, final String pass, final Activity activity,
                           final  Class<NavigationActivity> openActivity, final Context context, final ProgressDialog progressDialog){
@@ -158,7 +175,9 @@ public class Transacciones {
     }
 
 
-
+    public DatabaseReference getDatabaseReference() {
+        return databaseReference;
+    }
 
 
 }

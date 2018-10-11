@@ -39,7 +39,9 @@ public class ForgotActivity extends AppCompatActivity implements View.OnClickLis
         int  vista = view.getId();
         switch (vista){
             case R.id.btnRecuperar:{
-                 if(!Util.emptyCampMSG(etMail,"Ingrese un correo "))
+                 if(!Util.emptyCampMSG(etMail,"Ingrese un correo ")){
+                     recuperarPass(Util.getTxt(etMail));
+                 }
                 break;
             }
         }
