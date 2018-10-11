@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableActivity extends Fragment {
+public class TableFragment extends Fragment {
 
     List<Object> objects = new ArrayList<>();
     public  List<Ruta> listRutas = new ArrayList();
@@ -41,7 +41,6 @@ public class TableActivity extends Fragment {
         objects.add("Te");
         objects.add("Va");
         tr.inicializatedFireBase(view.getContext());
-        addTable();
         getNodes(new Ruta());
         return view;
     }
@@ -49,24 +48,35 @@ public class TableActivity extends Fragment {
 
     private void addTable(){
 
-        TableLayout tl = (TableLayout) view.findViewById(R.id.tvRow);
+        TableLayout tl = view.findViewById(R.id.tvRow);
 
-        for (Object objects: objects) {
+        for (Ruta objects: listRutas) {
             TableRow tr = new TableRow(view.getContext());
             tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
             tr.setBackgroundColor(Color.WHITE);
-            tr.setWeightSum(4);
+            tr.setWeightSum(3);
             /**
              * Crear un tv para cada campo
              */
             TextView tv = new TextView(view.getContext());
-            tv.setText(objects.toString());
+            tv.setText(objects.getFecha());
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
+
+            TextView tv1 = new TextView(view.getContext());
+            tv1.setText(objects.getPuntoInicio().getLatitude()+" -- "+objects.getPuntoInicio().getLongitude());
+            tv1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
+
+            TextView tv2 = new TextView(view.getContext());
+            tv2.setText(objects.getPuntoFinal().getLatitude()+" -- "+objects.getPuntoFinal().getLongitude());
+            tv2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
+
+
             /**
              * Agregar todos los tvs
              */
             tr.addView(tv);
-
+            tr.addView(tv1);
+            tr.addView(tv2);
             /**
              * Agregar el tr
              */
@@ -77,7 +87,6 @@ public class TableActivity extends Fragment {
 
     public void getNodes(final Ruta ruta){
         listRutas = new ArrayList<>();
-        final FirebaseUser usa = tr.firebaseAuth.getCurrentUser();
         tr.getDatabaseReference().child(ruta.getFirebaseNodeName())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -85,8 +94,8 @@ public class TableActivity extends Fragment {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Ruta object = snapshot.getValue(ruta.getClass());
                             listRutas.add(object);
-                            Toast.makeText(view.getContext(), "s-- "+object.getFecha(), Toast.LENGTH_SHORT).show();
                         }
+                        addTable();
                     }
 
                     @Override

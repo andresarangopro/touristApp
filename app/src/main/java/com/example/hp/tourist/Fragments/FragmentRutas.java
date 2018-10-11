@@ -9,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.hp.tourist.MapFragment;
 import com.example.hp.tourist.R;
-import com.example.hp.tourist.TableActivity;
+import com.example.hp.tourist.TableFragment;
 
 
 public class FragmentRutas extends Fragment implements View.OnClickListener{
@@ -44,7 +43,7 @@ public class FragmentRutas extends Fragment implements View.OnClickListener{
         int vista = view.getId();
         switch (vista){
             case R.id.btnHistoRut:{
-                TableActivity ta= new TableActivity();
+                TableFragment ta= new TableFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.FrFragment, ta,"findThisFragment")
                         .addToBackStack(null)

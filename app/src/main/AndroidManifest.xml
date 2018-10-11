@@ -47,7 +47,7 @@
             android:value="@string/google_maps_key_1" />
 
 
-        <activity android:name=".TableActivity"></activity>
+        <activity android:name=".TableFragment"></activity>
            <activity android:name=".Fragments.MapsFragment"
             android:label="@string/title_activity_maps"></activity>
     </application>

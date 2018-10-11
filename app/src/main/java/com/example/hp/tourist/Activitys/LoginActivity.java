@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.example.hp.tourist.NavigationActivity;
 import com.example.hp.tourist.R;
 import com.example.hp.tourist.Clases.Transacciones;
-import com.example.hp.tourist.TableActivity;
 import com.example.hp.tourist.Util;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
