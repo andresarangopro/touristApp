@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.hp.tourist.MapsActivity;
+
 import com.example.hp.tourist.NavigationActivity;
 import com.example.hp.tourist.R;
 import com.example.hp.tourist.Clases.Transacciones;

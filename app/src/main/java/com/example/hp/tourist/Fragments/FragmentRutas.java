@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.hp.tourist.MapFragment;
 import com.example.hp.tourist.R;
+import com.example.hp.tourist.TableActivity;
 
 
 public class FragmentRutas extends Fragment implements View.OnClickListener{
 
     private View view;
-    private Button btnHistoRut,btnMunVisit,btnSharedUb,btnWhoisNe;
+    private Button btnHistoRut,btnMunVisit,btnSharedUb,btnWhoisNe,btnMap;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,7 +33,9 @@ public class FragmentRutas extends Fragment implements View.OnClickListener{
         btnMunVisit = view.findViewById(R.id.btnMunVisit);
         btnSharedUb = view.findViewById(R.id.btnSharedUb);
         btnWhoisNe= view.findViewById(R.id.btnWhoisNe);
+        btnMap = view.findViewById(R.id.btnMap);
 
+        btnMap.setOnClickListener(this);
         btnHistoRut.setOnClickListener(this);
     }
 
@@ -40,6 +44,21 @@ public class FragmentRutas extends Fragment implements View.OnClickListener{
         int vista = view.getId();
         switch (vista){
             case R.id.btnHistoRut:{
+                TableActivity ta= new TableActivity();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FrFragment, ta,"findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
+                break;
+            }
+            case R.id.btnMap:{
+                /* MapFragment nextFrag= new MapFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FrFragment, nextFrag,"findThisFragment")
+                        .addToBackStack(null)
+                        .commit();*/
+
                 Intent firstpage= new Intent(getActivity(),MapsFragment.class);
                 getActivity().startActivity(firstpage);
                 break;
