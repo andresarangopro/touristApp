@@ -2,22 +2,24 @@ package com.example.hp.tourist;
 
 import android.location.Location;
 
-public class Municipio {
+import com.google.android.gms.maps.model.LatLng;
 
-    private Location location;
+public class Municipio implements FirebaseItems{
+
+    private LatLng location;
 
     private String name;
 
-    public Municipio(Location location, String name) {
+    public Municipio(LatLng location, String name) {
         this.location = location;
         this.name = name;
     }
 
-    public Location getLocation() {
+    public LatLng getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(LatLng location) {
         this.location = location;
     }
 
@@ -27,5 +29,10 @@ public class Municipio {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String getFirebaseNodeName() {
+        return "Municipios";
     }
 }
