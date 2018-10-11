@@ -6,14 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class RVArticles extends RecyclerView.Adapter<RVArticles.ViewHolder>{
+public class RVTouristAtraction extends RecyclerView.Adapter<RVTouristAtraction.ViewHolder>{
 
-    private ArrayList<Municipio> mDataset;
+    private ArrayList<AtraccionTuristica> mDataset;
 
     private Context mContext;
 
@@ -23,14 +23,17 @@ public class RVArticles extends RecyclerView.Adapter<RVArticles.ViewHolder>{
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
 
+        ImageView image;
+
         // each data item is just a string in this case
         public ViewHolder(View v) {
             super(v);
             textViewTitle = v.findViewById(R.id.tvNombre);
+            image = v.findViewById(R.id.imgAtraction);
         }
     }
 
-    public RVArticles(ArrayList<Municipio> mDataset, Context mContext) {
+    public RVTouristAtraction(ArrayList<AtraccionTuristica> mDataset, Context mContext) {
         this.mDataset = mDataset;
         this.mContext = mContext;
     }
@@ -39,12 +42,14 @@ public class RVArticles extends RecyclerView.Adapter<RVArticles.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.rv_municipios, parent,false);
-        return new RVArticles.ViewHolder(v);
+        return new RVTouristAtraction.ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.textViewTitle.setText(mDataset.get(position).getName());
+        holder.image.setImageDrawable(mDataset.get(position).getImage());
+
     }
 
     @Override
