@@ -25,7 +25,7 @@ import java.util.List;
 
 public class TableFragment extends Fragment {
 
-    List<Object> objects = new ArrayList<>();
+
     public  List<Ruta> listRutas = new ArrayList();
     private Transacciones tr = new Transacciones();
     private View view;
@@ -35,11 +35,6 @@ public class TableFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.activity_table, container, false);
-
-        objects.add("HOLA");
-        objects.add("Cómo");
-        objects.add("Te");
-        objects.add("Va");
         tr.inicializatedFireBase(view.getContext());
         getNodes(new Ruta());
         return view;
@@ -63,11 +58,11 @@ public class TableFragment extends Fragment {
             tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
 
             TextView tv1 = new TextView(view.getContext());
-            tv1.setText(objects.getPuntoInicio().getLatitude()+" -- "+objects.getPuntoInicio().getLongitude());
+            tv1.setText(objects.getPuntoInicio().getLatitude() + "," + objects.getPuntoInicio().getLongitude());
             tv1.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
 
             TextView tv2 = new TextView(view.getContext());
-            tv2.setText(objects.getPuntoFinal().getLatitude()+" -- "+objects.getPuntoFinal().getLongitude());
+            tv2.setText(objects.getPuntoFinal().getLatitude() + "," + objects.getPuntoFinal().getLongitude());
             tv2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
 
 
@@ -88,20 +83,20 @@ public class TableFragment extends Fragment {
     public void getNodes(final Ruta ruta){
         listRutas = new ArrayList<>();
         tr.getDatabaseReference().child(ruta.getFirebaseNodeName())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            Ruta object = snapshot.getValue(ruta.getClass());
-                            listRutas.add(object);
-                        }
-                        addTable();
+            .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Ruta object = snapshot.getValue(ruta.getClass());
+                        listRutas.add(object);
                     }
+                    addTable();
+                }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
     }
 
 }
