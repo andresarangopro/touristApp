@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.example.hp.tourist.R;
 import com.example.hp.tourist.TableFragment;
+import com.example.hp.tourist.VisitFragment;
 
 
 public class FragmentRutas extends Fragment implements View.OnClickListener{
@@ -43,7 +44,7 @@ public class FragmentRutas extends Fragment implements View.OnClickListener{
         int vista = view.getId();
         switch (vista){
             case R.id.btnHistoRut:{
-                TableFragment ta= new TableFragment();
+                TableFragment ta = new TableFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.FrFragment, ta,"findThisFragment")
                         .addToBackStack(null)

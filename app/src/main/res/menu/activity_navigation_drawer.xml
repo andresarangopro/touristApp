@@ -9,29 +9,17 @@
             android:icon="@mipmap/ic_route"
             android:title="Menu Principal" />
         <item
-            android:id="@+id/nav_chat"
-            android:icon="@mipmap/ic_map"
-            android:title="Mapa" />
-        <item
             android:id="@+id/nav_eventos"
             android:icon="@mipmap/ic_atraction"
             android:title="Atracciones" />
         <item
-            android:id="@+id/nav_noticias"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/nav_noticias" />
-        <item
-            android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/nav_perfil" />
+            android:id="@+id/nav_visitados"
+            android:icon="@mipmap/ic_visit"
+            android:title="Visitados" />
     </group>
 
     <item android:title="Otros">
         <menu>
-            <item
-                android:id="@+id/nav_configuracion"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/nav_configuracion" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_menu_manage"

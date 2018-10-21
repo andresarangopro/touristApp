@@ -79,31 +79,17 @@ public class NavigationActivity extends AppCompatActivity
         getFragmentManager().popBackStack();
         Fragment fragment = null;
 
-
-
         switch (item.getItemId()) {
             case R.id.nav_rutas: {
                 fragment = new FragmentRutas();
-                break;
-            }
-            case R.id.nav_chat: {
-                //startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 break;
             }
             case R.id.nav_eventos: {
                 fragment = new FragmentAtracciones();
                 break;
             }
-            case R.id.nav_noticias: {
-
-                break;
-            }
-            case R.id.nav_perfil: {
-
-                break;
-            }
-            case R.id.nav_configuracion: {
-
+            case R.id.nav_visitados: {
+                fragment = new VisitFragment();
                 break;
             }
             case R.id.nav_logout: {

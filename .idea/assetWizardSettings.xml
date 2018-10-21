@@ -35,8 +35,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\usuario\Desktop\spinning-cup.png" />
-                                      <entry key="outputName" value="ic_atraction" />
+                                      <entry key="imageAsset" value="C:\Users\usuario\Desktop\visitor.png" />
+                                      <entry key="outputName" value="ic_visit" />
                                     </map>
                                   </option>
                                 </PersistentState>
